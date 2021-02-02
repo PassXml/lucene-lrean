@@ -7,13 +7,26 @@ group 'org.start2do'
 version '1.0-SNAPSHOT'
 
 repositories {
+    maven {
+        url 'http://work.lidig.com:8026/repository/maven-public/'
+    }
     mavenCentral()
+    mavenLocal()
+}
+ext {
+    luceneVersion = '8.8.0'
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    implementation group: 'org.apache.lucene', name: 'lucene-core', version: luceneVersion
+    implementation group: 'org.apache.lucene', name: 'lucene-queryparser', version: luceneVersion
+    implementation group: 'org.apache.lucene', name: 'lucene-analyzers-common', version: luceneVersion
+    implementation group: 'org.ansj', name: 'ansj_seg', version: '5.1.6'
+    implementation group: 'org.ansj', name: 'ansj_lucene6_plug', version: '5.1.2.1'
+
 }
 
 test {
